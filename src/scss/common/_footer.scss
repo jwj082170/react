@@ -68,3 +68,46 @@ footer {
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+	footer {
+		.upper {
+			nav {
+				width: 100%;
+				margin-top: 80px;
+
+				dl {
+					dt {
+						margin-bottom: 30px;
+					}
+					dd {
+						margin-bottom: 15px;
+					}
+				}
+			}
+		}
+		.lower {
+			p {
+				width: 100%;
+				margin-bottom: 50px;
+			}
+			.terms {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0px;
+				justify-content: center;
+
+				li {
+					width: 50%;
+					margin-bottom: 10px;
+				}
+			}
+			.sns {
+				width: 100%;
+				margin-top: 20px;
+				justify-content: flex-start;
+			}
+		}
+	}
+}
