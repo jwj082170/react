@@ -32,10 +32,10 @@
 		margin: 100px auto;
 		transform: translateY(100px);
 		opacity: 0;
-		transition: 1s 0.8s;
+		transition: opacity 1s 0.8s, transform 1s 0.8s;
 
 		p {
-			font-size: 50px;
+			font-size: 20px;
 		}
 	}
 }
@@ -54,5 +54,29 @@
 	> .inner {
 		opacity: 1;
 		transform: translateY(0px);
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.content {
+		figure {
+			height: 150px;
+			h1 {
+				font-size: 130px;
+				bottom: -22px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.content {
+		figure {
+			height: 100px;
+			h1 {
+				font-size: 60px;
+				bottom: 0px;
+			}
+		}
 	}
 }
