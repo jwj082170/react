@@ -30,7 +30,7 @@ function App() {
 					<Content />
 				</Route>
 
-				{/* 서브페이지 라우터 */}
+				{/* 서브페이지 전용 header 라우터 */}
 				<Route path='/'>
 					<Header type={'sub'} />
 				</Route>

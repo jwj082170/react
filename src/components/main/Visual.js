@@ -1,5 +1,5 @@
 function Visual() {
-	return <figure></figure>;
+	return <figure id='visual'></figure>;
 }
 
 export default Visual;

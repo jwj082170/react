@@ -1,5 +1,11 @@
+import Layout from '../common/Layout';
+
 function Members() {
-	return <div>Members</div>;
+	return (
+		<Layout>
+			<p>Members</p>
+		</Layout>
+	);
 }
 
 export default Members;
