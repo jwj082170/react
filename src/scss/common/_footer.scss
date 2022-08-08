@@ -34,4 +34,37 @@ footer {
 			}
 		}
 	}
+
+	.lower {
+		margin-top: 80px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		p {
+			font: 14px/1 'arial';
+			color: #333;
+			letter-spacing: 2px;
+			display: flex;
+			align-items: center;
+		}
+
+		ul {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.terms {
+			gap: 50px;
+			font: bold 14px/1 'arial';
+			color: #999;
+		}
+
+		.sns {
+			gap: 30px;
+			font-size: 20px;
+			color: #777;
+		}
+	}
 }
