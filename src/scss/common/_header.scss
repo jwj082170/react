@@ -1,0 +1,49 @@
+header {
+	width: 100%;
+	height: 200px;
+	padding: 0px 10vw;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: center;
+
+	h1 {
+		width: 200px;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: center;
+
+		img {
+			width: 150px;
+		}
+		span {
+			font: 12px/1 'arial';
+			color: #777;
+			text-indent: 2px;
+		}
+	}
+
+	nav {
+		width: 65%;
+		display: flex;
+		justify-content: space-between;
+
+		#gnb {
+			display: flex;
+			gap: 40px;
+			align-items: center;
+
+			a {
+				padding: 15px 0px;
+				font: 16px/1 'merriweathher sans';
+				color: #999;
+			}
+		}
+
+		.util {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+	}
+}
