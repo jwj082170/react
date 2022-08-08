@@ -6,11 +6,11 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
-function Header() {
+function Header({ type }) {
 	const active = { color: '#000' };
 
 	return (
-		<header>
+		<header className={type}>
 			<h1>
 				<Link to='/'>
 					<img

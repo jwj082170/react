@@ -106,6 +106,49 @@ header {
 	}
 }
 
+header.main {
+	position: absolute;
+	top: 0;
+	left: 0px;
+	z-index: 2;
+
+	h1 {
+		span {
+			color: #fff;
+		}
+	}
+
+	nav {
+		#gnb {
+			a {
+				color: #fff;
+
+				&:before {
+					background: #fff;
+				}
+
+				&::after {
+					background: #fff;
+				}
+
+				//Gnb a요소 호버, 활성화 모션
+				&:hover,
+				&.active {
+					color: #fff;
+				}
+			}
+		}
+
+		.util {
+			color: #fff;
+		}
+	}
+
+	.fa-bars {
+		color: #fff;
+	}
+}
+
 @media screen and (max-width: $web_s) {
 	header {
 		nav {
