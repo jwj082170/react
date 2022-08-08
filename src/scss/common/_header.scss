@@ -40,6 +40,21 @@ header {
 				position: relative;
 				transition: 0.5s;
 
+				&:before {
+					content: '';
+					display: block;
+					width: 1px;
+					height: 1px;
+					border-radius: 50%;
+					background: #777;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translateX(-50%);
+					opacity: 0;
+					transition: 0.5s;
+				}
+
 				&::after {
 					content: '';
 					display: block;
@@ -52,9 +67,17 @@ header {
 					transition: 0.5s;
 				}
 
+				//Gnb a요소 호버, 활성화 모션
 				&:hover,
 				&.active {
 					color: #000;
+
+					&::before {
+						width: 10px;
+						height: 10px;
+						top: -30%;
+						opacity: 1;
+					}
 
 					&::after {
 						width: 100%;
