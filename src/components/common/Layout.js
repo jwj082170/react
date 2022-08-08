@@ -1,8 +1,12 @@
-function Layout({ children }) {
+function Layout({ children, name }) {
 	return (
-		<section>
+		<section className={`content ${name}`}>
 			<figure>
-				<h1>Title</h1>
+				<img
+					src={`${process.env.PUBLIC_URL}/img/${name}.jpg`}
+					alt={name}
+				/>
+				<h1>{name}</h1>
 			</figure>
 
 			<div className='inner'>{children}</div>
