@@ -37,6 +37,30 @@ header {
 				padding: 15px 0px;
 				font: 16px/1 'merriweathher sans';
 				color: #999;
+				position: relative;
+				transition: 0.5s;
+
+				&::after {
+					content: '';
+					display: block;
+					width: 0%;
+					height: 1px;
+					background: #555;
+					position: absolute;
+					left: 50%;
+					bottom: 0;
+					transition: 0.5s;
+				}
+
+				&:hover,
+				&.active {
+					color: #000;
+
+					&::after {
+						width: 100%;
+						left: 0%;
+					}
+				}
 			}
 		}
 
