@@ -7,6 +7,7 @@ header {
 	justify-content: space-between;
 	align-content: center;
 	position: relative;
+	transition: height 0.5s;
 
 	h1 {
 		width: 200px;
@@ -159,6 +160,7 @@ header.main {
 
 @media screen and (max-width: $tablet) {
 	header {
+		height: 150px;
 		nav {
 			width: 25%;
 			#gnb {
@@ -173,6 +175,7 @@ header.main {
 
 @media screen and (max-width: $mobile) {
 	header {
+		height: 100px;
 		nav {
 			display: none;
 		}
