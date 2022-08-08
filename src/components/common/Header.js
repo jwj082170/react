@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -66,6 +67,8 @@ function Header() {
 					</li>
 				</ul>
 			</nav>
+
+			<FontAwesomeIcon icon={faBars} />
 		</header>
 	);
 }
