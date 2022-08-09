@@ -20,6 +20,8 @@
 			p {
 				font: 14px/1.2 'arial';
 				color: #999;
+				margin-bottom: 20px;
+				word-break: break-all;
 			}
 			span {
 				font: 12px/1 'arial';
@@ -41,6 +43,38 @@
 
 			&:hover {
 				filter: saturate(1.2);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.Youtube {
+		article {
+			h2 {
+				width: 47%;
+			}
+			.txt {
+				width: 50%;
+			}
+			.pic {
+				width: 100%;
+				margin-top: 30px;
+				margin-bottom: 80px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.Youtube {
+		article {
+			h2 {
+				width: 100%;
+				margin-bottom: 15px;
+			}
+			.txt {
+				width: 100%;
 			}
 		}
 	}

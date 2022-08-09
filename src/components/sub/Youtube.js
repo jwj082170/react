@@ -16,7 +16,6 @@ function Youtube() {
 		});
 	}, []);
 
-	//미션 - 제목은 30글자 넘어가면 말줄임표 ..., 본문은 200글자 이상시 말줄임표, 날짜는 년,월,일까지만 출력 (35분까지)
 	return (
 		<Layout name={'Youtube'}>
 			{Vids.map((vid) => (
