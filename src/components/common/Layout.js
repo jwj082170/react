@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 function Layout({ children, name }) {
-	//공통 레이아웃 프레임인 section을 담을 참조객체 생성
 	const frame = useRef(null);
 
-	//해당 컴포넌트가 마운트 되자마자 참조객체에 담겨있는 section요소에 on클래스 추가
 	useEffect(() => {
 		frame.current.classList.add('on');
 	}, []);
@@ -19,7 +17,10 @@ function Layout({ children, name }) {
 				<h1>{name}</h1>
 			</figure>
 
-			<div className='inner'>{children}</div>
+			<div className='inner'>
+				<h1>{name}</h1>
+				{children}
+			</div>
 		</section>
 	);
 }

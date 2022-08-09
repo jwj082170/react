@@ -7,6 +7,7 @@
 		position: relative;
 		opacity: 0;
 		transition: 1s;
+		overflow: hidden;
 
 		img {
 			width: 100%;
@@ -33,8 +34,19 @@
 		opacity: 0;
 		transition: opacity 1s 0.8s, transform 1s 0.8s;
 
-		p {
-			font-size: 20px;
+		h1 {
+			font: normal 60px/1 'work sans';
+			color: #111;
+			margin-bottom: 70px;
+
+			&::after {
+				content: '';
+				display: block;
+				width: 60px;
+				height: 1px;
+				background: #555;
+				margin-top: 20px;
+			}
 		}
 	}
 }
