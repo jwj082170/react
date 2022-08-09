@@ -3,20 +3,52 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Department() {
+	const path = process.env.PUBLIC_URL;
 	const [Members, setMembers] = useState([]);
+
 	useEffect(() => {
-		axios
-			.get(process.env.PUBLIC_URL + '/DB/members.json')
-			.then((json) => {
-				setMembers(json.data.members);
-			});
+		axios.get(path + '/DB/members.json').then((json) => {
+			setMembers(json.data.members);
+		});
 	}, []);
 
 	useEffect(() => {
 		console.log(Members);
 	}, [Members]);
 
-	return <Layout name={'Department'}></Layout>;
+	return (
+		<Layout name={'Department'}>
+			{Members.map((member, idx) => (
+				<article key={idx}>
+					<div className='inner'>
+						<div className='pic'>
+							<img
+								src={`${path}/img/${member.pic}`}
+								alt={member.name}
+							/>
+						</div>
+						<h2>{member.name}</h2>
+						<p>{member.position}</p>
+					</div>
+				</article>
+			))}
+		</Layout>
+	);
 }
 
 export default Department;
+
+{
+	/* 
+<article>
+	<div className="inner">
+		<div className="pic">
+			<img src="" alt="" />
+		</div>
+
+		<h2>멤버 이름</h2>
+		<p>맴버 직책</p>
+	</div>
+</article> 
+*/
+}
