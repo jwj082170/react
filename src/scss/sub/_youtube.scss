@@ -41,17 +41,26 @@
 				height: 100%;
 				object-fit: cover;
 			}
+
 			.fa-youtube {
 				font-size: 80px;
-				color: #111;
 				position: absolute;
+				color: #111;
 				top: 50%;
 				left: 50%;
-				transform: translate(-50%, -50%);
+				transform: translate(-50%, 0%);
+				opacity: 0;
+				transition: 0.5s;
+				cursor: pointer;
 			}
 
 			&:hover {
 				filter: saturate(1.2);
+
+				.fa-youtube {
+					opacity: 1;
+					transform: translate(-50%, -50%);
+				}
 			}
 		}
 	}

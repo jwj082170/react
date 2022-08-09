@@ -1,10 +1,11 @@
 import Layout from '../common/Layout';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 function Youtube() {
+	const line = useRef(null);
 	const [Vids, setVids] = useState([]);
 
 	useEffect(() => {
@@ -45,7 +46,7 @@ function Youtube() {
 							src={vid.snippet.thumbnails.standard.url}
 							alt={vid.title}
 						/>
-						<FontAwesomeIcon icon={faYoutube} />
+						<FontAwesomeIcon icon={faYoutube} ref={line} />
 					</div>
 				</article>
 			))}
