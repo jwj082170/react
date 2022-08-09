@@ -34,11 +34,20 @@
 			background: #000;
 			filter: saturate(0);
 			transition: 0.5s;
+			position: relative;
 
 			img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+			}
+			.fa-youtube {
+				font-size: 80px;
+				color: #111;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
 			}
 
 			&:hover {
