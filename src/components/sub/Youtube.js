@@ -16,15 +16,27 @@ function Youtube() {
 		});
 	}, []);
 
+	//미션 - 제목은 30글자 넘어가면 말줄임표 ..., 본문은 200글자 이상시 말줄임표, 날짜는 년,월,일까지만 출력 (35분까지)
 	return (
 		<Layout name={'Youtube'}>
 			{Vids.map((vid) => (
 				<article key={vid.id}>
-					<h2>{vid.snippet.title}</h2>
+					<h2>
+						{vid.snippet.title.length > 30
+							? vid.snippet.title.substr(0, 30) + '...'
+							: vid.snippet.title}
+					</h2>
 
 					<div className='txt'>
-						<p>{vid.snippet.description}</p>
-						<span>{vid.snippet.publishedAt}</span>
+						<p>
+							{vid.snippet.description.length > 200
+								? vid.snippet.description.substr(0, 200) +
+								  '...'
+								: vid.snippet.description}
+						</p>
+						<span>
+							{vid.snippet.publishedAt.split('T')[0]}
+						</span>
 					</div>
 
 					<div className='pic'>
