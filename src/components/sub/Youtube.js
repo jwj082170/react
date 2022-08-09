@@ -1,4 +1,5 @@
 import Layout from '../common/Layout';
+import Pop from '../common/Pop';
 import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +8,7 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 function Youtube() {
 	const line = useRef(null);
 	const [Vids, setVids] = useState([]);
+	const [Open, setOpen] = useState(false);
 
 	useEffect(() => {
 		const key = 'AIzaSyC77Pd__ju0Wqx_Umc-IuW7Cn2mWi_HVsk';
@@ -19,38 +21,50 @@ function Youtube() {
 		});
 	}, []);
 
+	useEffect(() => {
+		console.log(line);
+	}, [line]);
+
 	return (
-		<Layout name={'Youtube'}>
-			{Vids.map((vid) => (
-				<article key={vid.id}>
-					<h2>
-						{vid.snippet.title.length > 30
-							? vid.snippet.title.substr(0, 30) + '...'
-							: vid.snippet.title}
-					</h2>
+		<>
+			<Layout name={'Youtube'}>
+				{Vids.map((vid) => (
+					<article key={vid.id}>
+						<h2>
+							{vid.snippet.title.length > 30
+								? vid.snippet.title.substr(0, 30) + '...'
+								: vid.snippet.title}
+						</h2>
 
-					<div className='txt'>
-						<p>
-							{vid.snippet.description.length > 200
-								? vid.snippet.description.substr(0, 200) +
-								  '...'
-								: vid.snippet.description}
-						</p>
-						<span>
-							{vid.snippet.publishedAt.split('T')[0]}
-						</span>
-					</div>
+						<div className='txt'>
+							<p>
+								{vid.snippet.description.length > 200
+									? vid.snippet.description.substr(0, 200) +
+									  '...'
+									: vid.snippet.description}
+							</p>
+							<span>
+								{vid.snippet.publishedAt.split('T')[0]}
+							</span>
+						</div>
 
-					<div className='pic'>
-						<img
-							src={vid.snippet.thumbnails.standard.url}
-							alt={vid.title}
-						/>
-						<FontAwesomeIcon icon={faYoutube} ref={line} />
-					</div>
-				</article>
-			))}
-		</Layout>
+						<div className='pic'>
+							<img
+								src={vid.snippet.thumbnails.standard.url}
+								alt={vid.title}
+							/>
+							<FontAwesomeIcon
+								icon={faYoutube}
+								ref={line}
+								onClick={() => setOpen(true)}
+							/>
+						</div>
+					</article>
+				))}
+			</Layout>
+
+			{Open && <Pop setOpen={setOpen}></Pop>}
+		</>
 	);
 }
 
