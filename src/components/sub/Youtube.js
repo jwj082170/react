@@ -63,7 +63,13 @@ function Youtube() {
 				))}
 			</Layout>
 
-			{Open && <Pop setOpen={setOpen}></Pop>}
+			{Open && (
+				<Pop setOpen={setOpen}>
+					<iframe
+						src={`https://www.youtube.com/embed/${Vids[0].snippet.resourceId.videoId}`}
+						frameBorder='0'></iframe>
+				</Pop>
+			)}
 		</>
 	);
 }
