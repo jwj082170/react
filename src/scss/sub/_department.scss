@@ -9,7 +9,8 @@
 		article {
 			width: 33.333%;
 			float: left;
-			padding: 30px;
+			padding: 50px;
+			margin-bottom: 30px;
 
 			.inner {
 				width: 100%;
@@ -19,6 +20,12 @@
 					height: 20vmax;
 					background: #111;
 					margin-bottom: 20px;
+					filter: saturate(0.2);
+					transition: 0.5s;
+
+					&:hover {
+						filter: saturate(1.2);
+					}
 
 					img {
 						width: 100%;
@@ -26,6 +33,26 @@
 						object-fit: cover;
 					}
 				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.Department {
+		> .inner {
+			article {
+				width: 50%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.Department {
+		> .inner {
+			article {
+				width: 100%;
 			}
 		}
 	}
