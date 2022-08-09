@@ -23,7 +23,7 @@ function Youtube() {
 	}, []);
 
 	useEffect(() => {
-		console.log(line);
+		console.log(line.current);
 	}, [line]);
 
 	return (
