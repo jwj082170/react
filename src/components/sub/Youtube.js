@@ -9,6 +9,7 @@ function Youtube() {
 	const line = useRef(null);
 	const [Vids, setVids] = useState([]);
 	const [Open, setOpen] = useState(false);
+	const [Index, setIndex] = useState(0);
 
 	useEffect(() => {
 		const key = 'AIzaSyC77Pd__ju0Wqx_Umc-IuW7Cn2mWi_HVsk';
@@ -28,7 +29,7 @@ function Youtube() {
 	return (
 		<>
 			<Layout name={'Youtube'}>
-				{Vids.map((vid) => (
+				{Vids.map((vid, idx) => (
 					<article key={vid.id}>
 						<h2>
 							{vid.snippet.title.length > 30
@@ -56,7 +57,10 @@ function Youtube() {
 							<FontAwesomeIcon
 								icon={faYoutube}
 								ref={line}
-								onClick={() => setOpen(true)}
+								onClick={() => {
+									setOpen(true);
+									setIndex(idx);
+								}}
 							/>
 						</div>
 					</article>
@@ -66,7 +70,7 @@ function Youtube() {
 			{Open && (
 				<Pop setOpen={setOpen}>
 					<iframe
-						src={`https://www.youtube.com/embed/${Vids[0].snippet.resourceId.videoId}`}
+						src={`https://www.youtube.com/embed/${Vids[Index].snippet.resourceId.videoId}`}
 						frameBorder='0'></iframe>
 				</Pop>
 			)}
