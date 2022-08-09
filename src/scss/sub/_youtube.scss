@@ -48,19 +48,20 @@
 				color: #111;
 				top: 50%;
 				left: 50%;
-				transform: translate(-50%, 0%);
-				opacity: 0;
-				transition: 0.5s;
+				transform: translate(-50%, -50%);
+
 				cursor: pointer;
+
+				path {
+					fill: transparent;
+					stroke: #000;
+					stroke-width: 15;
+					transition: stroke-dashoffset 1s;
+				}
 			}
 
 			&:hover {
 				filter: saturate(1.2);
-
-				.fa-youtube {
-					opacity: 1;
-					transform: translate(-50%, -50%);
-				}
 			}
 		}
 	}
