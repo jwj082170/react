@@ -56,12 +56,19 @@
 					fill: transparent;
 					stroke: #000;
 					stroke-width: 15;
-					transition: stroke-dashoffset 1s;
+					stroke-dasharray: 2150;
+					stroke-dashoffset: 2150;
+					transition: stroke-dashoffset 0.8s, fill 0.5s 0.4s;
 				}
 			}
 
 			&:hover {
 				filter: saturate(1.2);
+
+				path {
+					fill: rgba(0, 0, 0, 0.9);
+					stroke-dashoffset: 0;
+				}
 			}
 		}
 	}
