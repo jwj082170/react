@@ -6,12 +6,17 @@ function Location() {
 	const { kakao } = window;
 
 	const option = {
-		center: new kakao.maps.LatLng(37.5116828, 127.059151),
+		center: new kakao.maps.LatLng(37.51271224560607, 127.06069135102807),
 		level: 3,
 	};
 
+	const marker = new kakao.maps.Marker({
+		position: option.center,
+	});
+
 	useEffect(() => {
-		new kakao.maps.Map(container.current, option);
+		const map_instance = new kakao.maps.Map(container.current, option);
+		marker.setMap(map_instance);
 	}, []);
 
 	return (
