@@ -1,9 +1,10 @@
 import Layout from '../common/Layout';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Location() {
 	const container = useRef(null);
 	const { kakao } = window;
+	const [Location, setLocation] = useState(null);
 
 	const option = {
 		center: new kakao.maps.LatLng(37.51271224560607, 127.06069135102807),
@@ -24,11 +25,18 @@ function Location() {
 	useEffect(() => {
 		const map_instance = new kakao.maps.Map(container.current, option);
 		marker.setMap(map_instance);
+		setLocation(map_instance);
 	}, []);
 
 	return (
 		<Layout name={'Location'}>
 			<div id='map' ref={container}></div>
+			<button onClick={() => Location.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)}>
+				Traffic ON
+			</button>
+			<button onClick={() => Location.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)}>
+				Traffic OFF
+			</button>
 		</Layout>
 	);
 }
