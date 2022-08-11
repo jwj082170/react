@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 function Location() {
 	const { kakao } = window;
 
-	//각 지점별 정보값 배열에 추가
 	const info = [
 		{
 			title: '삼성동 코엑스',
@@ -30,10 +29,11 @@ function Location() {
 	];
 
 	const container = useRef(null);
+	//버튼 가상돔요소를 참조할 빈 객체 생성
+	const btns = useRef(null);
 	const [Location, setLocation] = useState(null);
 	const [Traffic, setTraffic] = useState(false);
 	const [Info] = useState(info);
-	//지점버튼 클릭시 변경되는 순서값이 저장될 스테이트 추가
 	const [Index, setIndex] = useState(0);
 
 	const option = {
@@ -56,6 +56,10 @@ function Location() {
 		const map_instance = new kakao.maps.Map(container.current, option);
 		marker.setMap(map_instance);
 		setLocation(map_instance);
+
+		//버튼활성화
+		for (const btn of btns.current.children) btn.classList.remove('on');
+		btns.current.children[Index].classList.add('on');
 	}, [Index]);
 
 	useEffect(() => {
@@ -70,11 +74,8 @@ function Location() {
 			<div id='map' ref={container}></div>
 			<button onClick={() => setTraffic(!Traffic)}>{Traffic ? 'Traffic OFF' : 'Traffic ON'}</button>
 
-			<ul className='branch'>
-				{/* <li onClick={() => setIndex(0)}>삼성동 코엑스</li>
-				<li onClick={() => setIndex(1)}>올림픽 공원</li>
-				<li onClick={() => setIndex(2)}>서울 시청</li> */}
-				{Info.map((info, idx) => {
+			<ul className='branch' ref={btns}>
+				{info.map((info, idx) => {
 					return (
 						<li key={idx} onClick={() => setIndex(idx)}>
 							{info.title}

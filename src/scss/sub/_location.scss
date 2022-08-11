@@ -4,4 +4,14 @@
 		height: 500px;
 		background: #000;
 	}
+
+	.branch {
+		li {
+			color: #555;
+
+			&.on {
+				color: red;
+			}
+		}
+	}
 }
