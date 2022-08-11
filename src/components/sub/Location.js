@@ -29,8 +29,6 @@ function Location() {
 	];
 
 	const container = useRef(null);
-	//버튼 가상돔요소를 참조할 빈 객체 생성
-	const btns = useRef(null);
 	const [Location, setLocation] = useState(null);
 	const [Traffic, setTraffic] = useState(false);
 	const [Info] = useState(info);
@@ -56,10 +54,6 @@ function Location() {
 		const map_instance = new kakao.maps.Map(container.current, option);
 		marker.setMap(map_instance);
 		setLocation(map_instance);
-
-		//버튼활성화
-		for (const btn of btns.current.children) btn.classList.remove('on');
-		btns.current.children[Index].classList.add('on');
 	}, [Index]);
 
 	useEffect(() => {
@@ -74,10 +68,12 @@ function Location() {
 			<div id='map' ref={container}></div>
 			<button onClick={() => setTraffic(!Traffic)}>{Traffic ? 'Traffic OFF' : 'Traffic ON'}</button>
 
-			<ul className='branch' ref={btns}>
+			<ul className='branch'>
 				{info.map((info, idx) => {
+					let on = '';
+					Index === idx && (on = 'on');
 					return (
-						<li key={idx} onClick={() => setIndex(idx)}>
+						<li key={idx} onClick={() => setIndex(idx)} className={on}>
 							{info.title}
 						</li>
 					);
