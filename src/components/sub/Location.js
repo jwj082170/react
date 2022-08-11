@@ -5,6 +5,8 @@ function Location() {
 	const container = useRef(null);
 	const { kakao } = window;
 	const [Location, setLocation] = useState(null);
+	//traffic 출력여부를 결정할 boolean값이 담길 state추가
+	const [Traffic, setTraffic] = useState(false);
 
 	const option = {
 		center: new kakao.maps.LatLng(37.51271224560607, 127.06069135102807),
@@ -28,15 +30,21 @@ function Location() {
 		setLocation(map_instance);
 	}, []);
 
+	//Traffic값이 바뀔때마다 호출되는 useEffect문
+	useEffect(() => {
+		if (!Location) return;
+		//Traffic값이 true일때 교통량 표시
+		//그렇지 않으면 교통량 표시제거
+		Traffic
+			? Location.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
+			: Location.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+	}, [Traffic]);
+
 	return (
 		<Layout name={'Location'}>
 			<div id='map' ref={container}></div>
-			<button onClick={() => Location.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)}>
-				Traffic ON
-			</button>
-			<button onClick={() => Location.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)}>
-				Traffic OFF
-			</button>
+			{/* 버튼을 클릭할때마다 기존의 Traffic정보값을 반전시킴 (토글) */}
+			<button onClick={() => setTraffic(!Traffic)}>{Traffic ? 'Traffic OFF' : 'Traffic ON'}</button>
 		</Layout>
 	);
 }
