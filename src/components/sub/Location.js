@@ -55,10 +55,18 @@ function Location() {
 		marker.setMap(map_instance);
 		setLocation(map_instance);
 
-		//컴포넌트 마운트시 window전역객체에 리사이즈 이벤트 연결
-		window.addEventListener('resize', () => {
+		const handleResize = () => {
+			console.log('지도위치 가운대로 갱신');
 			map_instance.setCenter(Info[Index].latlng);
-		});
+		};
+
+		//컴포넌트 마운트시 window전역객체에 리사이즈 이벤트 연결
+		window.addEventListener('resize', handleResize);
+
+		//해당 컴포넌트가 unmount시 window전역객체에서 핸들러함수 제거
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
 	}, [Index]);
 
 	useEffect(() => {
