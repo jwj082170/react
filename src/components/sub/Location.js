@@ -54,6 +54,11 @@ function Location() {
 		const map_instance = new kakao.maps.Map(container.current, option);
 		marker.setMap(map_instance);
 		setLocation(map_instance);
+
+		//컴포넌트 마운트시 window전역객체에 리사이즈 이벤트 연결
+		window.addEventListener('resize', () => {
+			map_instance.setCenter(Info[Index].latlng);
+		});
 	}, [Index]);
 
 	useEffect(() => {
