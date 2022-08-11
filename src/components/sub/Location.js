@@ -2,20 +2,32 @@ import Layout from '../common/Layout';
 import { useEffect, useRef, useState } from 'react';
 
 function Location() {
-	const container = useRef(null);
 	const { kakao } = window;
+	//위치별로 관리할 정보값을 객체로 묶어서 다시 배열로 그룹핑
+	const info = [
+		{
+			title: '삼성동 코엑스',
+			latlng: new kakao.maps.LatLng(37.51271224560607, 127.06069135102807),
+			imgUrl: process.env.PUBLIC_URL + '/img/marker1.png',
+			imgSize: new kakao.maps.Size(232, 99),
+			imgPos: { offset: new kakao.maps.Point(116, 99) },
+		},
+	];
+
+	const container = useRef(null);
 	const [Location, setLocation] = useState(null);
-	//traffic 출력여부를 결정할 boolean값이 담길 state추가
 	const [Traffic, setTraffic] = useState(false);
+	//해당 지도관련 정보값이 변경될때마다 화면을 다시 렌더링하고 return문에서 편하게 호출하기 위해 Info 스테이트에 옮겨담음
+	const [Info, setInfo] = useState(info);
 
 	const option = {
-		center: new kakao.maps.LatLng(37.51271224560607, 127.06069135102807),
+		center: Info[0].latlng,
 		level: 3,
 	};
 
-	const imgSrc = process.env.PUBLIC_URL + '/img/marker1.png';
-	const imgSize = new kakao.maps.Size(232, 99);
-	const imgPos = { offset: new kakao.maps.Point(116, 99) };
+	const imgSrc = Info[0].imgUrl;
+	const imgSize = Info[0].imgSize;
+	const imgPos = Info[0].imgPos;
 
 	const markerImage = new kakao.maps.MarkerImage(imgSrc, imgSize, imgPos);
 
@@ -30,11 +42,8 @@ function Location() {
 		setLocation(map_instance);
 	}, []);
 
-	//Traffic값이 바뀔때마다 호출되는 useEffect문
 	useEffect(() => {
 		if (!Location) return;
-		//Traffic값이 true일때 교통량 표시
-		//그렇지 않으면 교통량 표시제거
 		Traffic
 			? Location.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
 			: Location.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
@@ -43,7 +52,6 @@ function Location() {
 	return (
 		<Layout name={'Location'}>
 			<div id='map' ref={container}></div>
-			{/* 버튼을 클릭할때마다 기존의 Traffic정보값을 반전시킴 (토글) */}
 			<button onClick={() => setTraffic(!Traffic)}>{Traffic ? 'Traffic OFF' : 'Traffic ON'}</button>
 		</Layout>
 	);
